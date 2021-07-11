@@ -23,4 +23,10 @@ const stateNames = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "C
 const maddieReiff = createCandidate("Maddie Reiff", mrResults);
 const lilyRose = createCandidate("Lily Rose", lrResults);
 
-console.log(maddieReiff, lilyRose);
+// determine winner
+let winner = "";
+if (maddieReiff.totalVotes > lilyRose.totalVotes) {
+    winner = maddieReiff.name;
+} else if (maddieReiff.totalVotes < lilyRose.totalVotes) {
+    winner = lilyRose.name;
+}
