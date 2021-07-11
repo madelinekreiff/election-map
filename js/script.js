@@ -43,14 +43,30 @@ const setStateResults = function (state) {
   let stateWinner = "";
   if (mrResults[state] > lrResults[state]) {
     stateWinner = maddieReiff.name;
-    // theStates[state].rgbColor = maddieReiff.partyColor;
+    theStates[state].rgbColor = maddieReiff.partyColor;
   } else if (mrResults[state] < lrResults[state]) {
     stateWinner = lilyRose.name;
-    // theStates[state].rgbColor = lilyRose.partyColor;
+    theStates[state].rgbColor = lilyRose.partyColor;
   } else {
     stateWinner = "Tie";
-    // theStates[state].rgbColor = [11, 32, 57];
+    theStates[state].rgbColor = [11, 32, 57];
   }
+
+  // populate the dynamic table in the bottom corner of the map for state winners
+  const stateResults = document.querySelector("#stateResults");
+  const stateName = stateResults.children[0].children[0].children[0];
+  const stateAbbrev = stateResults.children[0].children[0].children[1];
+  const name1 = stateResults.children[1].children[0].children[0].innerText = maddieReiff.name;
+  const results1 = stateResults.children[1].children[0].children[1];
+  const name2 = stateResults.children[1].children[1].children[0].innerText = lilyRose.name;
+  const results2 = stateResults.children[1].children[1].children[1];
+  const winnerName = stateResults.children[1].children[2].children[1];
+
+  stateName.innerText = theStates[state].nameFull;
+  stateAbbrev.innerText = theStates[state].nameAbbrev;
+  results1.innerText = mrResults[state];
+  results2.innerText = lrResults[state];
+  winnerName.innerText = stateWinner;
 };
 
 // call setStateResults function for each state
@@ -60,9 +76,10 @@ stateNames.forEach(function (state, index) {
 
 // populate the table at the top of the map that states the overall winner
 const countryResults = document.querySelector("#countryResults");
-countryResults.children[0].children[0].children[0].innerText = maddieReiff.name;
-countryResults.children[0].children[0].children[1].innerText = maddieReiff.totalVotes;
-countryResults.children[0].children[0].children[2].innerText = lilyRose.name;
-countryResults.children[0].children[0].children[3].innerText = lilyRose.totalVotes;
-countryResults.children[0].children[0].children[5].innerText = overallWinner;
+const countryData = countryResults.children[0].children[0];
+countryData.children[0].innerText = maddieReiff.name;
+countryData.children[1].innerText = maddieReiff.totalVotes;
+countryData.children[2].innerText = lilyRose.name;
+countryData.children[3].innerText = lilyRose.totalVotes;
+countryData.children[5].innerText = overallWinner;
 
