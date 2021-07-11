@@ -1,19 +1,19 @@
 // factory function to create new candidates
-const createCandidate = function(name, electionResults, partyColor) {
+const createCandidate = function (name, electionResults, partyColor) {
   const politician = {
     name: name,
     electionResults: electionResults,
     totalVotes: function () {
-        this.totalVotes = 0;
-        for (let i of this.electionResults) {
-            this.totalVotes += i;
-        }
+      this.totalVotes = 0;
+      for (let i of this.electionResults) {
+        this.totalVotes += i;
+      }
     },
     partyColor: partyColor
   }; // end object
   politician.totalVotes();
   return politician;
-}
+};
 
 // create election results and array of state names
 const mrResults = [5, 1, 7, 2, 33, 6, 4, 2, 1, 14, 8, 3, 1, 11, 11, 0, 5, 3, 3, 3, 7, 4, 8, 9, 3, 7, 2, 2, 4, 2, 8, 3, 15, 15, 2, 12, 0, 4, 13, 1, 3, 2, 8, 21, 3, 2, 11, 1, 3, 7, 2];
@@ -24,12 +24,32 @@ const stateNames = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "C
 const maddieReiff = createCandidate("Maddie Reiff", mrResults, [132, 17, 11]);
 const lilyRose = createCandidate("Lily Rose", lrResults, [245, 141, 136]);
 
-// determine winner
-let winner = "";
-if (maddieReiff.totalVotes > lilyRose.totalVotes) {
+// function to determine overall winner
+const electionWinner = function () {
+  let winner = "";
+  if (maddieReiff.totalVotes > lilyRose.totalVotes) {
     winner = maddieReiff.name;
-} else if (maddieReiff.totalVotes < lilyRose.totalVotes) {
+  } else if (maddieReiff.totalVotes < lilyRose.totalVotes) {
     winner = lilyRose.name;
-}
-
+  }
+  return winner;
+};
+const overallWinner = electionWinner();
 console.log(maddieReiff, lilyRose);
+console.log(overallWinner);
+
+// function to assign the winner of each state
+const winnerPerState = [];
+const setStateResults = function (state) {
+  let stateWinner = "";
+  if (mrResults[state] > lrResults[state]) {
+    stateWinner = maddieReiff.name;
+  } else if (mrResults[state] < lrResults[state]) {
+    stateWinner = lilyRose.name;
+  }
+  winnerPerState.push(stateWinner);
+};
+stateNames.forEach(function (state, index) {
+    setStateResults(index);
+});
+console.log(winnerPerState);
