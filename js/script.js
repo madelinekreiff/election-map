@@ -38,18 +38,25 @@ const overallWinner = electionWinner();
 console.log(maddieReiff, lilyRose);
 console.log(overallWinner);
 
-// function to assign the winner of each state
+// function to assign the winner and color of each state
 const winnerPerState = [];
 const setStateResults = function (state) {
   let stateWinner = "";
   if (mrResults[state] > lrResults[state]) {
     stateWinner = maddieReiff.name;
+    theStates[state].rgbColor = maddieReiff.partyColor;
   } else if (mrResults[state] < lrResults[state]) {
     stateWinner = lilyRose.name;
+    theStates[state].rgbColor = lilyRose.partyColor;
+  } else {
+    stateWinner = "Tie";
+    theStates[state].rgbColor = [11, 32, 57];
   }
   winnerPerState.push(stateWinner);
+
 };
 stateNames.forEach(function (state, index) {
     setStateResults(index);
 });
 console.log(winnerPerState);
+
