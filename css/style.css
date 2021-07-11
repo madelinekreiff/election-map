@@ -42,9 +42,9 @@ header {
 #countryResults {
   background-color: #f2f2f2;
   border-collapse: collapse;
-  box-shadow: 1px 1px 1px 1px rgba(204,204,204,0.5);
-  -moz-box-shadow: 1px 1px 1px 1px rgba(204,204,204,0.5);
-  -webkit-box-shadow: 1px 1px 1px 1px rgba(204,204,204,0.5);
+  box-shadow: 1px 1px 1px 1px rgba(204, 204, 204, 0.5);
+  -moz-box-shadow: 1px 1px 1px 1px rgba(204, 204, 204, 0.5);
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(204, 204, 204, 0.5);
 }
 
 th,
@@ -61,7 +61,7 @@ td {
   color: white;
 }
 .name-1 {
-  background-color: rgb(132,17,11);
+  background-color: rgb(132, 17, 11);
   color: white;
 }
 .name-2 {

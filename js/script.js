@@ -1,5 +1,5 @@
 // factory function to create new candidates
-const createCandidate = function(name, electionResults, totalVotes) {
+const createCandidate = function(name, electionResults, partyColor) {
   const politician = {
     name: name,
     electionResults: electionResults,
@@ -8,7 +8,8 @@ const createCandidate = function(name, electionResults, totalVotes) {
         for (let i of this.electionResults) {
             this.totalVotes += i;
         }
-    }
+    },
+    partyColor: partyColor
   }; // end object
   politician.totalVotes();
   return politician;
@@ -20,8 +21,8 @@ const lrResults = [4, 2, 4, 4, 22, 3, 3, 1, 2, 15, 8, 1, 3, 9, 0, 6, 1, 5, 5, 1,
 const stateNames = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
 
 // create candidates
-const maddieReiff = createCandidate("Maddie Reiff", mrResults);
-const lilyRose = createCandidate("Lily Rose", lrResults);
+const maddieReiff = createCandidate("Maddie Reiff", mrResults, [132, 17, 11]);
+const lilyRose = createCandidate("Lily Rose", lrResults, [245, 141, 136]);
 
 // determine winner
 let winner = "";
@@ -30,3 +31,5 @@ if (maddieReiff.totalVotes > lilyRose.totalVotes) {
 } else if (maddieReiff.totalVotes < lilyRose.totalVotes) {
     winner = lilyRose.name;
 }
+
+console.log(maddieReiff, lilyRose);
