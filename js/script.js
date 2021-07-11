@@ -34,29 +34,35 @@ const electionWinner = function () {
   }
   return winner;
 };
+
+// call electionWinner function
 const overallWinner = electionWinner();
-console.log(maddieReiff, lilyRose);
-console.log(overallWinner);
 
 // function to assign the winner and color of each state
-const winnerPerState = [];
 const setStateResults = function (state) {
   let stateWinner = "";
   if (mrResults[state] > lrResults[state]) {
     stateWinner = maddieReiff.name;
-    theStates[state].rgbColor = maddieReiff.partyColor;
+    // theStates[state].rgbColor = maddieReiff.partyColor;
   } else if (mrResults[state] < lrResults[state]) {
     stateWinner = lilyRose.name;
-    theStates[state].rgbColor = lilyRose.partyColor;
+    // theStates[state].rgbColor = lilyRose.partyColor;
   } else {
     stateWinner = "Tie";
-    theStates[state].rgbColor = [11, 32, 57];
+    // theStates[state].rgbColor = [11, 32, 57];
   }
-  winnerPerState.push(stateWinner);
-
 };
+
+// call setStateResults function for each state
 stateNames.forEach(function (state, index) {
     setStateResults(index);
 });
-console.log(winnerPerState);
+
+// populate the table at the top of the map that states the overall winner
+const countryResults = document.querySelector("#countryResults");
+countryResults.children[0].children[0].children[0].innerText = maddieReiff.name;
+countryResults.children[0].children[0].children[1].innerText = maddieReiff.totalVotes;
+countryResults.children[0].children[0].children[2].innerText = lilyRose.name;
+countryResults.children[0].children[0].children[3].innerText = lilyRose.totalVotes;
+countryResults.children[0].children[0].children[5].innerText = overallWinner;
 
