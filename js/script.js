@@ -38,6 +38,15 @@ const electionWinner = function () {
 // call electionWinner function
 const overallWinner = electionWinner();
 
+// populate the table at the top of the map that states the overall winner
+const countryResults = document.querySelector("#countryResults");
+const countryData = countryResults.children[0].children[0];
+countryData.children[0].innerText = maddieReiff.name;
+countryData.children[1].innerText = maddieReiff.totalVotes;
+countryData.children[2].innerText = lilyRose.name;
+countryData.children[3].innerText = lilyRose.totalVotes;
+countryData.children[5].innerText = overallWinner;
+
 // function to assign the winner and color of each state
 const setStateResults = function (state) {
   let stateWinner = "";
@@ -56,11 +65,11 @@ const setStateResults = function (state) {
   const stateResults = document.querySelector("#stateResults");
   const stateName = stateResults.children[0].children[0].children[0];
   const stateAbbrev = stateResults.children[0].children[0].children[1];
-  const name1 = stateResults.children[1].children[0].children[0].innerText = maddieReiff.name;
-  const results1 = stateResults.children[1].children[0].children[1];
-  const name2 = stateResults.children[1].children[1].children[0].innerText = lilyRose.name;
-  const results2 = stateResults.children[1].children[1].children[1];
-  const winnerName = stateResults.children[1].children[2].children[1];
+  const name1 = stateResults.children[0].children[1].children[0].innerText = maddieReiff.name;
+  const results1 = stateResults.children[0].children[1].children[1];
+  const name2 = stateResults.children[0].children[2].children[0].innerText = lilyRose.name;
+  const results2 = stateResults.children[0].children[2].children[1];
+  const winnerName = stateResults.children[0].children[3].children[1];
 
   stateName.innerText = theStates[state].nameFull;
   stateAbbrev.innerText = theStates[state].nameAbbrev;
@@ -73,13 +82,3 @@ const setStateResults = function (state) {
 stateNames.forEach(function (state, index) {
     setStateResults(index);
 });
-
-// populate the table at the top of the map that states the overall winner
-const countryResults = document.querySelector("#countryResults");
-const countryData = countryResults.children[0].children[0];
-countryData.children[0].innerText = maddieReiff.name;
-countryData.children[1].innerText = maddieReiff.totalVotes;
-countryData.children[2].innerText = lilyRose.name;
-countryData.children[3].innerText = lilyRose.totalVotes;
-countryData.children[5].innerText = overallWinner;
-
