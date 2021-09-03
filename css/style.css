@@ -17,6 +17,7 @@ body {
 header {
   font-family: 'Montserrat', serif;
   font-size: 21px;
+  line-height: 2em;
   padding: 0.75em 0;
   text-align: center;
   text-shadow: 1px 1px #ccc;
@@ -24,8 +25,8 @@ header {
 
 .map-container {
   margin: 0 auto;
-  position:relative;
-  width:800px;
+  position: relative;
+  width: 800px;
 }
 
 #stateResults {
